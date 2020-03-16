@@ -18,7 +18,6 @@ and not wasting it. In the US, 30-40% of food supply in the household is being
 wasted. FoodEx is here to try to reduce the percentage of food being wasted.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** 
 - **Mobile:** 
 - **Story:** 
@@ -91,8 +90,7 @@ wasted. FoodEx is here to try to reduce the percentage of food being wasted.
 [Add table of models]
 ### Networking
 -  parse-dashboard --appId Foodx --masterKey myMasterKey --serverURL "https://foodxx.herokuapp.com/parse"
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- API: https://developer.apple.com/maps/
 
 
 
