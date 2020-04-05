@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://foodxx.herokuapp.com/parse"
             })
         )
-        
         return true
     }
 
