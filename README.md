@@ -138,11 +138,13 @@ screen will be the user profile with its information.
         }
       ```
 
+### Existing API Endpoints
+##### Apple Maps
+- Base URL - [https://developer.apple.com/maps/](https://developer.apple.com/maps/)
+
 
 ### Other
-
 -  parse-dashboard --appId Foodx --masterKey myMasterKey --serverURL "https://foodxx.herokuapp.com/parse"
-- API: https://developer.apple.com/maps/
 
 
 
