@@ -98,13 +98,18 @@ screen will be the user profile with its information.
    | author        | Pointer to User | image author                                        |
    | image         | File            | image that user posts                               |
    | caption       | String          | image caption by author                             |
-   | commentsCount | Number          | number of comments that has been posted to an image |
-   | likesCount    | Number          | number of likes for the post                        |
+   | location      | String          | location that the user posts
    | createdAt     | DateTime        | date when post is created (default field)           |
-   | updatedAt     | DateTime        | date when post is last updated (default field)      |
 
 
 ### Networking
+#### List of network requests by screen
+   - Home Feed Screen
+
+
+
+### Other
+
 -  parse-dashboard --appId Foodx --masterKey myMasterKey --serverURL "https://foodxx.herokuapp.com/parse"
 - API: https://developer.apple.com/maps/
 
