@@ -104,8 +104,39 @@ screen will be the user profile with its information.
 
 ### Networking
 #### List of network requests by screen
-   - Home Feed Screen
+   - Login Screen
+       ```swift
+          @IBAction func onSignIn(_ sender: Any) {
+            let username = usernameField.text!
+            let password = passwordField.text!
 
+            PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+              if user != nil {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+              } else {
+                print("Error: \(error?.localizedDescription)")
+              }
+            }
+          }
+       ```
+       
+   - Sign Up Screen 
+      ```swift
+        @IBAction func onSignup(_ sender: Any) {
+          let user = PFUser()
+          user.username = usernameField.text
+          user.password = passwordField.text
+          user.email = emailField.text
+
+          user.signUpInBackground { (success, error) in
+            if success {
+              self.performSegue(withIdentifier: "signupSegue", sender: nil)
+            } else {
+              print("Error: \(error?.localizedDescription)")
+            }
+          }
+        }
+      ```
 
 
 ### Other
