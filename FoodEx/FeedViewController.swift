@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FeedViewController: UIViewController {
 
@@ -27,4 +28,14 @@ class FeedViewController: UIViewController {
     }
     */
 
+    
+    
+    @IBAction func onLogoutButton(_ sender: Any) {
+        PFUser.logOut()
+        self.performSegue(withIdentifier: "LoggingOut", sender: nil)
+    }
+    
+    
+    
+    
 }
