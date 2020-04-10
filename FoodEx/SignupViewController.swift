@@ -12,9 +12,12 @@ import Parse
 class SignupViewController: UIViewController {
 
     
+    @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var cityStateField: UITextField!
+    @IBOutlet weak var zipcodeField: UITextField!
     
     
     override func viewDidLoad() {
@@ -26,9 +29,14 @@ class SignupViewController: UIViewController {
 
     @IBAction func onSignup(_ sender: Any) {
         let user = PFUser()
+        user["name"] = nameField.text
         user.username = usernameField.text
         user.password = passwordField.text
         user.email = emailField.text
+        user["location"] = cityStateField.text
+        user["zipcode"] = zipcodeField.text
+        user["rating"] = 0
+        user["numberOfRatings"] = 0
         
         user.signUpInBackground { (success, error) in
             if success {
