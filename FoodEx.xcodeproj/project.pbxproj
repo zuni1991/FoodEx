@@ -18,6 +18,7 @@
 		B11F69BD240DDCA1006B96A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B11F69BB240DDCA1006B96A9 /* LaunchScreen.storyboard */; };
 		B11F69C8240DDCA1006B96A9 /* FoodExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69C7240DDCA1006B96A9 /* FoodExTests.swift */; };
 		B11F69D3240DDCA1006B96A9 /* FoodExUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69D2240DDCA1006B96A9 /* FoodExUITests.swift */; };
+		B11F69E724414EE6006B96A9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69E624414EE6006B96A9 /* PhotoViewController.swift */; };
 		DDCC24DB8BF953CB9434D35D /* Pods_FoodEx_FoodExUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFFFD0C76699761B7383670 /* Pods_FoodEx_FoodExUITests.framework */; };
 		F2A4F186A3273E60FB2E9B4B /* Pods_FoodExTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8820DD8A23AF0BDF076152FD /* Pods_FoodExTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		B11F69CE240DDCA1006B96A9 /* FoodExUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodExUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B11F69D2240DDCA1006B96A9 /* FoodExUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodExUITests.swift; sourceTree = "<group>"; };
 		B11F69D4240DDCA1006B96A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B11F69E624414EE6006B96A9 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		BEE5503CCEE72D8C23CA683A /* Pods-FoodEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodEx.release.xcconfig"; path = "Target Support Files/Pods-FoodEx/Pods-FoodEx.release.xcconfig"; sourceTree = "<group>"; };
 		BFFFFD0C76699761B7383670 /* Pods_FoodEx_FoodExUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodEx_FoodExUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22F8CA292A76F4DFDE5B009 /* Pods-FoodEx-FoodExUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodEx-FoodExUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodEx-FoodExUITests/Pods-FoodEx-FoodExUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				B11F69B0240DDC9E006B96A9 /* AppDelegate.swift */,
 				B11F69B2240DDC9E006B96A9 /* SceneDelegate.swift */,
 				B11F69B6240DDC9E006B96A9 /* Main.storyboard */,
+				B11F69E624414EE6006B96A9 /* PhotoViewController.swift */,
 				B11F69B9240DDCA1006B96A9 /* Assets.xcassets */,
 				B11F69BB240DDCA1006B96A9 /* LaunchScreen.storyboard */,
 				B11F69BE240DDCA1006B96A9 /* Info.plist */,
@@ -418,6 +421,7 @@
 				493366BB2420316200A3FB7F /* SignupViewController.swift in Sources */,
 				493366B924202D1C00A3FB7F /* FeedViewController.swift in Sources */,
 				B11F69B3240DDC9E006B96A9 /* SceneDelegate.swift in Sources */,
+				B11F69E724414EE6006B96A9 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 63HF7ZC54Z;
 				INFOPLIST_FILE = FoodEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -610,6 +615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 63HF7ZC54Z;
 				INFOPLIST_FILE = FoodEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
