@@ -16,6 +16,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentField: UITextField!
+    var lat = 0.0
+    var lon = 0.0
     
     let manager = CLLocationManager()
     
@@ -40,9 +42,9 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
 //        AND SOMEHOW STORE THE LAN AND LONG AS PFObjects.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        
         let location = locations[0]
-        
+        lat = location.coordinate.latitude
+        lon = location.coordinate.longitude
         print("locations = \(location.coordinate.latitude) \(location.coordinate.longitude)")
     }
     
@@ -50,8 +52,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         let post = PFObject(className: "Posts")
         post["caption"] = commentField.text!
         post["author"] = PFUser.current()!
-        
-        
+        post["latitude"] = lat
+        post["longitude"] = lon
         
         let imageData = imageView.image!.pngData()!
         let file = PFFileObject(name: "image.png", data: imageData)
