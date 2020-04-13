@@ -142,6 +142,9 @@ screen will be the user profile with its information.
 ##### Apple Maps
 - Base URL - [https://developer.apple.com/maps/](https://developer.apple.com/maps/)
 
+### GIF Walkthrough
+Here's a walkthrough of implemented user stories:
+<img src='http://g.recordit.co/LnV4WpW7tr.gif' title='GIF Walkthrough' width='' alt='GIF Walkthrough' />
 
 ### Other
 -  parse-dashboard --appId Foodx --masterKey myMasterKey --serverURL "https://foodxx.herokuapp.com/parse"
