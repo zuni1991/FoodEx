@@ -9,26 +9,48 @@
 import UIKit
 import AlamofireImage
 import Parse
+import MapKit
+import CoreLocation
 
-class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate{
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentField: UITextField!
     
+    let manager = CLLocationManager()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Ask for Authorisation from the User.
+        self.manager.requestAlwaysAuthorization()
 
-        // Do any additional setup after loading the view.
+        // For use in foreground
+        self.manager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            manager.delegate = self
+            manager.desiredAccuracy = kCLLocationAccuracyBest
+            manager.startUpdatingLocation()
+        }
     }
-    
+        
+//        THIS CODE PRINTS LOCATIONS
+//        WE NEED TO BE ABLE TO CALL THIS FUNCTION IN THE onSubmitButton FUNCTION
+//        AND SOMEHOW STORE THE LAN AND LONG AS PFObjects.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        
+        let location = locations[0]
+        
+        print("locations = \(location.coordinate.latitude) \(location.coordinate.longitude)")
+    }
     
     @IBAction func onSubmitButton(_ sender: Any) {
         let post = PFObject(className: "Posts")
         post["caption"] = commentField.text!
         post["author"] = PFUser.current()!
+        
         
         
         let imageData = imageView.image!.pngData()!
@@ -68,15 +90,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
+    
 }
