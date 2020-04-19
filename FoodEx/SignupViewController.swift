@@ -19,6 +19,9 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var cityStateField: UITextField!
     @IBOutlet weak var zipcodeField: UITextField!
     
+    @IBAction func Login(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

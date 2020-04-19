@@ -29,18 +29,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWj-fh-jZx">
-                                <rect key="frame" x="41" y="577" width="79" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="SIGN UP"/>
-                                <connections>
-                                    <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FYt-Q3-W5g"/>
-                                    <segue destination="bJp-iW-ehJ" kind="show" id="UgV-78-jmU"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0C-xS-mvJ">
-                                <rect key="frame" x="43" y="501" width="61" height="36"/>
+                                <rect key="frame" x="152" y="496" width="98" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="LOGIN"/>
@@ -64,6 +54,16 @@
                                 <rect key="frame" x="14" y="150" width="374" height="136"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWj-fh-jZx">
+                                <rect key="frame" x="180" y="559" width="43" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                <state key="normal" title="SIGN UP"/>
+                                <connections>
+                                    <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FYt-Q3-W5g"/>
+                                    <segue destination="bJp-iW-ehJ" kind="show" id="UgV-78-jmU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,12 +72,12 @@
                     <connections>
                         <outlet property="passwordField" destination="83L-33-Mxj" id="MZH-6R-evB"/>
                         <outlet property="usernameField" destination="GxI-9m-mVJ" id="BAg-i1-eeT"/>
-                        <segue destination="SG7-Ae-URe" kind="showDetail" identifier="loginSegue" id="vTT-kg-ctQ"/>
+                        <segue destination="SG7-Ae-URe" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="vTT-kg-ctQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4677" y="-1420"/>
+            <point key="canvasLocation" x="-4678.2608695652179" y="-1420.3125"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="TuT-Yf-kb8">
@@ -188,7 +188,7 @@
                     <navigationItem key="navigationItem" id="bfg-76-y28">
                         <barButtonItem key="leftBarButtonItem" title="Login" id="PIP-dc-C6E">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="showDetail" id="y1z-d9-xa2"/>
+                                <action selector="Login:" destination="1oz-7f-tDq" id="Opa-rF-WV8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -204,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acR-bv-7Fu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3572" y="-540"/>
+            <point key="canvasLocation" x="-2283" y="-1420"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Y5p-ll-EqC">
@@ -224,14 +224,14 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8U3-Bg-AdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3572" y="463"/>
+            <point key="canvasLocation" x="-3572" y="-439"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="bgc-ca-owd">
             <objects>
                 <viewController id="uGr-Oe-fD3" customClass="PhotoViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fsz-9L-i3G">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="foodX" translatesAutoresizingMaskIntoConstraints="NO" id="CNK-QJ-uEG">
@@ -281,7 +281,7 @@
             <objects>
                 <viewController id="ltb-eA-Go1" customClass="PhotoMapViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dEf-0p-lgs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YAk-lQ-7Lj">
@@ -292,7 +292,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ITI-1q-tcv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Kvz-ee-VMe"/>
+                    <navigationItem key="navigationItem" id="Kvz-ee-VMe">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="JdQ-qn-8H6">
+                            <connections>
+                                <action selector="Back:" destination="ltb-eA-Go1" id="93p-Z4-fsl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="YAk-lQ-7Lj" id="lJm-b5-rqe"/>
                     </connections>
@@ -306,7 +312,7 @@
             <objects>
                 <viewController id="4Bu-OA-nJJ" customClass="FeedViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5mh-Hx-sad">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -369,7 +375,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="03a-hl-hYd">
                             <connections>
-                                <segue destination="TKR-rN-Zfv" kind="presentation" id="b2t-ZX-2ZV"/>
+                                <segue destination="TKR-rN-Zfv" kind="presentation" modalPresentationStyle="fullScreen" id="b2t-ZX-2ZV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -382,7 +388,6 @@
                 <tapGestureRecognizer id="iMq-RY-wjG">
                     <connections>
                         <action selector="ItinerarioWithSender:" destination="4Bu-OA-nJJ" id="NDh-rP-JWx"/>
-                        <segue destination="TKR-rN-Zfv" kind="presentation" id="bJV-xX-FVu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -395,7 +400,7 @@
                     <tabBarItem key="tabBarItem" title="FEED" id="GbC-E8-jVr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1QY-b4-yPC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -414,7 +419,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="kVe-IS-RuE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cb8-hP-5Ny">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -433,7 +438,7 @@
                     <tabBarItem key="tabBarItem" title="Photo" id="tbk-x9-FBN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5jC-gM-Ncz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -450,7 +455,7 @@
             <objects>
                 <viewController id="JHm-fp-f96" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F9F-OX-Oub">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="mnf-fN-0Bi"/>
@@ -468,7 +473,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" id="pBz-V1-jyT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GuZ-OX-aMW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -483,12 +488,11 @@
         <!--Navigation Controller-->
         <scene sceneID="OdG-5N-8q1">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TQ7-Iz-vSh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TKR-rN-Zfv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lrg-7b-khe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M2h-PT-ILS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -496,14 +500,13 @@
                         <segue destination="ltb-eA-Go1" kind="relationship" relationship="rootViewController" id="tPm-iX-Lo7"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TQ7-Iz-vSh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4617" y="2702"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bJV-xX-FVu"/>
-        <segue reference="vTT-kg-ctQ"/>
-        <segue reference="I6U-G3-Xev"/>
+        <segue reference="kbB-NY-UvG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="foodX" width="992" height="998"/>

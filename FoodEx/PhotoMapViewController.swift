@@ -14,6 +14,9 @@ class PhotoMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func Back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +28,7 @@ class PhotoMapViewController: UIViewController {
         // Set animated property to true to animate the transition to the region
         mapView.setRegion(region, animated: false)
         let annotaion  = MKPointAnnotation()
-        annotaion.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
+//        annotaion.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
     }
     
 
