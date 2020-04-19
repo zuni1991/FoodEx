@@ -24,6 +24,8 @@ class PhotoMapViewController: UIViewController {
         let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
         // Set animated property to true to animate the transition to the region
         mapView.setRegion(region, animated: false)
+        let annotaion  = MKPointAnnotation()
+        annotaion.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
     }
     
 
