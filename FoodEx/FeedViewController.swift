@@ -15,8 +15,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
 
+    
     var posts = [PFObject]()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -73,23 +75,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
           let d: String = "*Lugar Destacado"
           let sum = a + b + c + d
 
-            let alert = UIAlertController(title: "Itinerario de Procesión", message: "\(sum)", preferredStyle: UIAlertController.Style.alert)
-            let action1 = UIAlertAction(title: "Atrás", style: UIAlertAction.Style.cancel, handler: nil)
+          let alert = UIAlertController(title: "Itinerario de Procesión", message: "\(sum)", preferredStyle: UIAlertController.Style.alert)
+          let action1 = UIAlertAction(title: "Atrás", style: UIAlertAction.Style.cancel, handler: nil)
 
           alert.addAction(action1)
 
 
             self.present(alert, animated: true, completion: nil);
         }
-
-
     }
     
-    
-    
-
-
-
     /*
     // MARK: - Navigation
 
@@ -99,15 +94,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Pass the selected object to the new view controller.
     }
     */
-
-    
     
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
         self.performSegue(withIdentifier: "LoggingOut", sender: nil)
     }
-    
-    
-    
-    
 }

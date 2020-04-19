@@ -8,15 +8,35 @@
 
 import UIKit
 import MapKit
-
+import Parse
+import AlamofireImage
 
 class PhotoMapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var posts = [PFObject]()
+
+    
     @IBAction func Back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let query = PFQuery(className:"Posts")
+        query.includeKey("author")
+        query.limit = 5
+        
+        query.findObjectsInBackground{(posts,error) in
+            if posts != nil{
+                self.posts = posts!
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +45,14 @@ class PhotoMapViewController: UIViewController {
         let mapCenter = CLLocationCoordinate2D(latitude: 36.6517, longitude: -121.7978)
         let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
+        
+        let annotaion  = MKPointAnnotation()
+        annotaion.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
+
+        
         // Set animated property to true to animate the transition to the region
         mapView.setRegion(region, animated: false)
-        let annotaion  = MKPointAnnotation()
-//        annotaion.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
+        
     }
     
 
