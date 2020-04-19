@@ -45,17 +45,19 @@ class PhotoMapViewController: UIViewController {
         let mapCenter = CLLocationCoordinate2D(latitude: 36.6517, longitude: -121.7978)
         let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
-        
-        let annotaion  = MKPointAnnotation()
-        annotaion.coordinate = CLLocationCoordinate2D(latitude: <#T##CLLocationDegrees#>, longitude: <#T##CLLocationDegrees#>)
-
-        
-        // Set animated property to true to animate the transition to the region
+        createAnnotations(posts: posts)
         mapView.setRegion(region, animated: false)
         
     }
     
-
+    func createAnnotations(posts : [PFObject]){
+        for post in posts{
+            let annotations = MKPointAnnotation()
+            annotations.title = post["caption"] as? String
+            annotations.coordinate = CLLocationCoordinate2D(latitude: post["latitude"] as! CLLocationDegrees, longitude: (post["longitude"] as? CLLocationDegrees)!)
+            mapView.addAnnotation(annotations)
+        }
+    }
     
 
 }
