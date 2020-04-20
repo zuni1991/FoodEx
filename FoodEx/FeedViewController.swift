@@ -9,21 +9,24 @@
 import UIKit
 import Parse
 import AlamofireImage
+import CoreLocation
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate{
+    let manager = CLLocationManager()
     
     @IBOutlet weak var tableView: UITableView!
 
-    
     var posts = [PFObject]()
-    
+    var map_object = [String:[Double]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        print(CLLocationManager.authorizationStatus())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +34,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let query = PFQuery(className:"Posts")
         query.includeKey("author")
-        query.limit = 5
+        query.limit = 10
         
         query.findObjectsInBackground{(posts,error) in
             if posts != nil{
@@ -53,7 +56,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         //let user = post["author"] as! PFUser
         //cell.userName = user.username
-        
+        //map_object[post["caption"] as! String]=[post["logitude"],post["latitude"]];) as! [Double,Double]
         cell.captionLabel.text = post["caption"] as? String
         let ImageFile = post["image"] as! PFFileObject
         let urlString = ImageFile.url!
@@ -62,6 +65,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
 
 }
+    
     @IBAction func Itinerario(sender: UITapGestureRecognizer) {
         //if you need the cell or index path
         let location = sender.location(in: self.tableView)
@@ -85,18 +89,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.topViewController as? PhotoMapViewController {
+            vc.feed = posts
+        }
     }
-    */
     
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
         self.performSegue(withIdentifier: "LoggingOut", sender: nil)
     }
 }
+ 
