@@ -8,25 +8,39 @@
 
 import UIKit
 import MapKit
+import Parse
+import AlamofireImage
 
-
-class PhotoMapViewController: UIViewController {
+class PhotoMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // One degree of latitude is approximately 111 kilometers (69 miles) at all times.
-        // San Francisco Lat, Long = latitude: 37.783333, longitude: -122.416667
-        let mapCenter = CLLocationCoordinate2D(latitude: 36.6517, longitude: -121.7978)
-        let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
-        // Set animated property to true to animate the transition to the region
-        mapView.setRegion(region, animated: false)
+    var feed = [PFObject]()
+    @IBAction func Back(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        mapView.delegate = self
+    }
     
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.add_Annotations()
+        
+    }
+    
+    func add_Annotations(){
+        var annotations = [MKPointAnnotation]()
+        for post in feed{
+            let annotation = MKPointAnnotation()
+            annotation.title = post["caption"] as? String
+            annotation.coordinate = CLLocationCoordinate2D(latitude: post["latitude"] as! CLLocationDegrees, longitude: (post["longitude"] as? CLLocationDegrees)!)
+            annotations.append(annotation)
+        }
+        mapView.showAnnotations(annotations,animated: true)
+    }
 }
+
+
