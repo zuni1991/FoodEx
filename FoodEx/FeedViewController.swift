@@ -10,8 +10,8 @@ import UIKit
 import Parse
 import AlamofireImage
 import CoreLocation
-
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate{
+
     @IBOutlet weak var tableView: UITableView!
 
     var posts = [PFObject]()

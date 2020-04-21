@@ -43,7 +43,7 @@ class SignupViewController: UIViewController {
         
         user.signUpInBackground { (success, error) in
             if success {
-                self.performSegue(withIdentifier: "signupSegue", sender: nil)
+                self.performSegue(withIdentifier: "ProfilePicSegue", sender: nil)
             } else {
                 print("Error: \(error?.localizedDescription)")
             }
