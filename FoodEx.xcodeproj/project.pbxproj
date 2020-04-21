@@ -23,6 +23,9 @@
 		B11F69C8240DDCA1006B96A9 /* FoodExTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69C7240DDCA1006B96A9 /* FoodExTests.swift */; };
 		B11F69D3240DDCA1006B96A9 /* FoodExUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69D2240DDCA1006B96A9 /* FoodExUITests.swift */; };
 		B11F69E724414EE6006B96A9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69E624414EE6006B96A9 /* PhotoViewController.swift */; };
+		B1AF82DA244ABE9700FE0ED3 /* ProfileCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF82D9244ABE9700FE0ED3 /* ProfileCameraViewController.swift */; };
+		B1AF82DC244AD58000FE0ED3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF82DB244AD58000FE0ED3 /* ProfileViewController.swift */; };
+		B1AF82DE244AE4D200FE0ED3 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AF82DD244AE4D200FE0ED3 /* ProfileCell.swift */; };
 		DDCC24DB8BF953CB9434D35D /* Pods_FoodEx_FoodExUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFFFFD0C76699761B7383670 /* Pods_FoodEx_FoodExUITests.framework */; };
 		F2A4F186A3273E60FB2E9B4B /* Pods_FoodExTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8820DD8A23AF0BDF076152FD /* Pods_FoodExTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +75,9 @@
 		B11F69D2240DDCA1006B96A9 /* FoodExUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodExUITests.swift; sourceTree = "<group>"; };
 		B11F69D4240DDCA1006B96A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B11F69E624414EE6006B96A9 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		B1AF82D9244ABE9700FE0ED3 /* ProfileCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCameraViewController.swift; sourceTree = "<group>"; };
+		B1AF82DB244AD58000FE0ED3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B1AF82DD244AE4D200FE0ED3 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		BEE5503CCEE72D8C23CA683A /* Pods-FoodEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodEx.release.xcconfig"; path = "Target Support Files/Pods-FoodEx/Pods-FoodEx.release.xcconfig"; sourceTree = "<group>"; };
 		BFFFFD0C76699761B7383670 /* Pods_FoodEx_FoodExUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodEx_FoodExUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E22F8CA292A76F4DFDE5B009 /* Pods-FoodEx-FoodExUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodEx-FoodExUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodEx-FoodExUITests/Pods-FoodEx-FoodExUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +175,9 @@
 				493366BA2420316200A3FB7F /* SignupViewController.swift */,
 				49C5EA7E2443EF770005A807 /* PhotoMapViewController.swift */,
 				B11F69BE240DDCA1006B96A9 /* Info.plist */,
+				B1AF82D9244ABE9700FE0ED3 /* ProfileCameraViewController.swift */,
+				B1AF82DB244AD58000FE0ED3 /* ProfileViewController.swift */,
+				B1AF82DD244AE4D200FE0ED3 /* ProfileCell.swift */,
 			);
 			path = FoodEx;
 			sourceTree = "<group>";
@@ -430,7 +439,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1AF82DA244ABE9700FE0ED3 /* ProfileCameraViewController.swift in Sources */,
 				49C5EA7F2443EF770005A807 /* PhotoMapViewController.swift in Sources */,
+				B1AF82DC244AD58000FE0ED3 /* ProfileViewController.swift in Sources */,
+				B1AF82DE244AE4D200FE0ED3 /* ProfileCell.swift in Sources */,
 				493366B724202CEF00A3FB7F /* LoginViewController.swift in Sources */,
 				B11F69B1240DDC9E006B96A9 /* AppDelegate.swift in Sources */,
 				493366BB2420316200A3FB7F /* SignupViewController.swift in Sources */,
