@@ -12,21 +12,17 @@ import AlamofireImage
 import CoreLocation
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate{
-    let manager = CLLocationManager()
-    
     @IBOutlet weak var tableView: UITableView!
 
     var posts = [PFObject]()
     var map_object = [String:[Double]]()
-
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestWhenInUseAuthorization()
-        print(CLLocationManager.authorizationStatus())
+        checkLocationServices()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,19 +48,54 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let  post = posts[indexPath.row]
-        
-
-        //let user = post["author"] as! PFUser
-        //cell.userName = user.username
-        //map_object[post["caption"] as! String]=[post["logitude"],post["latitude"]];) as! [Double,Double]
-        cell.captionLabel.text = post["caption"] as? String
         let ImageFile = post["image"] as! PFFileObject
         let urlString = ImageFile.url!
         let url = URL(string: urlString)!
+        cell.captionLabel.text = post["caption"] as? String
         cell.photoView.af_setImage(withURL: url)
         return cell
 
-}
+    }
+    
+    // Location permissions Implementation
+    func setupLocationManager(){
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            // Show alert letting the user know they have to turn this on.
+            let alert = UIAlertController(title: "Please Enable Location", message:"Location is required to make fully utilize this App" , preferredStyle: UIAlertController.Style.alert)
+            let action1 = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                     alert.addAction(action1)
+            self.present(alert, animated: true, completion: nil);
+        }
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            // Show alert instructing them how to turn on permissions
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // Show an alert letting them know what's up
+            break
+        case .authorizedAlways:
+            break
+        @unknown default:
+            fatalError()
+        }
+    }
     
     @IBAction func Itinerario(sender: UITapGestureRecognizer) {
         //if you need the cell or index path
