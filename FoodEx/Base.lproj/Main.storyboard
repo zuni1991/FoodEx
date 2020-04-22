@@ -330,7 +330,7 @@
         <!--Photo Map View Controller-->
         <scene sceneID="Uod-2h-IIg">
             <objects>
-                <viewController id="ltb-eA-Go1" customClass="PhotoMapViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ltb-eA-Go1" customClass="PhotoMapViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dEf-0p-lgs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -422,6 +422,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="QGe-0f-FPn">
                             <connections>
                                 <action selector="onLogoutButton:" destination="4Bu-OA-nJJ" id="GGk-yM-hhq"/>
+                                <segue destination="BYZ-38-t0r" kind="showDetail" identifier="LoggingOut" id="b3a-JP-4cf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="03a-hl-hYd">
@@ -564,7 +565,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OdG-5N-8q1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TKR-rN-Zfv" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="TKR-rN-Zfv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lrg-7b-khe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M2h-PT-ILS">
@@ -586,7 +587,7 @@
         <image name="foodXWhite" width="996" height="995"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="b2t-ZX-2ZV"/>
+        <segue reference="bJV-xX-FVu"/>
         <segue reference="2Et-yP-zKo"/>
     </inferredMetricsTieBreakers>
 </document>
