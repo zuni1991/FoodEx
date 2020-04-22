@@ -131,7 +131,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
-        self.performSegue(withIdentifier: "LoggingOut", sender: nil)
+         dismiss(animated: true, completion: nil)
+        //self.performSegue(withIdentifier: "LoggingOut", sender: nil)
     }
 }
  
