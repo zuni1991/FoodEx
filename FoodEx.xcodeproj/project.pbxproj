@@ -15,6 +15,7 @@
 		49C5EA81244405A90005A807 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C5EA80244405A90005A807 /* CoreLocation.framework */; };
 		6FA17407EC990D5C0F139A02 /* Pods_FoodEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F3EEF045B704FBF18D4963E /* Pods_FoodEx.framework */; };
 		75531D1024445E510015D541 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75531D0F24445E510015D541 /* PostCell.swift */; };
+		75D8FE612453C01B00FD6719 /* PostMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D8FE602453C01B00FD6719 /* PostMap.swift */; };
 		B11F69B1240DDC9E006B96A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69B0240DDC9E006B96A9 /* AppDelegate.swift */; };
 		B11F69B3240DDC9E006B96A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11F69B2240DDC9E006B96A9 /* SceneDelegate.swift */; };
 		B11F69B8240DDC9E006B96A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B11F69B6240DDC9E006B96A9 /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		49C5EA80244405A90005A807 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5979576C6D60126F61F36230 /* Pods-FoodExTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodExTests.release.xcconfig"; path = "Target Support Files/Pods-FoodExTests/Pods-FoodExTests.release.xcconfig"; sourceTree = "<group>"; };
 		75531D0F24445E510015D541 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		75D8FE602453C01B00FD6719 /* PostMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMap.swift; sourceTree = "<group>"; };
 		8820DD8A23AF0BDF076152FD /* Pods_FoodExTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodExTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		978C4A3176F8942FB08C1762 /* Pods-FoodEx-FoodExUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodEx-FoodExUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodEx-FoodExUITests/Pods-FoodEx-FoodExUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A92DD158A2E332CCB3F38A18 /* Pods-FoodExTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodExTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodExTests/Pods-FoodExTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				B11F69B0240DDC9E006B96A9 /* AppDelegate.swift */,
 				B11F69B2240DDC9E006B96A9 /* SceneDelegate.swift */,
 				B11F69B6240DDC9E006B96A9 /* Main.storyboard */,
+				75D8FE602453C01B00FD6719 /* PostMap.swift */,
 				75531D0F24445E510015D541 /* PostCell.swift */,
 				B11F69B9240DDCA1006B96A9 /* Assets.xcassets */,
 				B11F69BB240DDCA1006B96A9 /* LaunchScreen.storyboard */,
@@ -447,6 +450,7 @@
 				B11F69B1240DDC9E006B96A9 /* AppDelegate.swift in Sources */,
 				493366BB2420316200A3FB7F /* SignupViewController.swift in Sources */,
 				493366B924202D1C00A3FB7F /* FeedViewController.swift in Sources */,
+				75D8FE612453C01B00FD6719 /* PostMap.swift in Sources */,
 				B11F69B3240DDC9E006B96A9 /* SceneDelegate.swift in Sources */,
 				B11F69E724414EE6006B96A9 /* PhotoViewController.swift in Sources */,
 				75531D1024445E510015D541 /* PostCell.swift in Sources */,

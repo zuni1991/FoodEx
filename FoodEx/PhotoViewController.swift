@@ -61,7 +61,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         post.saveInBackground { (success, error) in
             if success{
-                self.dismiss(animated: true, completion: nil)
+                //self.dismiss(animated: true, completion: nil)
+                self.tabBarController?.selectedIndex = 0
                 print("saved!")
             }else{
                 print("Error!")
