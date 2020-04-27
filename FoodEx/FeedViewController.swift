@@ -33,7 +33,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.order(byDescending: "createdAt")
         query.includeKey("author")
         query.limit = 10
-        
         query.findObjectsInBackground{(posts,error) in
             if posts != nil{
                 self.posts = posts!
@@ -51,6 +50,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let  post = posts[indexPath.row]
         let ImageFile = post["image"] as! PFFileObject
+        //let user = post["user"]
+        let user = PFUser.current()?.objectId
+        let date = post["createdAt"]
+        
+        cell.postTimeLabel.text = "Posted by \(user), "
         let urlString = ImageFile.url!
         let url = URL(string: urlString)!
         cell.captionLabel.text = post["caption"] as? String

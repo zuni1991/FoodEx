@@ -15,10 +15,24 @@ class ProfileCameraViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func onSubmitButton(_ sender: Any) {
+        //Delete Current Pic
+        let user = PFUser.current()!
+        let getProfilePic = PFQuery(className:"ProfilePic")
+        getProfilePic.whereKey("author", equalTo:user)
+        getProfilePic.findObjectsInBackground {
+            (objects, error) -> Void in
+            if error == nil {
+                for object in objects! {
+                    print("Profile picture updated!!")
+                    object.deleteEventually();
+                }
+            }
+        }
+        //Upload New Pic
         let image = PFObject(className: "ProfilePic")
         image["author"] = PFUser.current()!
         let imageData = imageView.image!.pngData()!
@@ -26,10 +40,10 @@ class ProfileCameraViewController: UIViewController, UIImagePickerControllerDele
         image["image"] = file
         
         image.saveInBackground { (success, error) in
-     if success {
-                self.performSegue(withIdentifier: "signupSegue", sender: nil)
+            if success {
+                    self.performSegue(withIdentifier: "signupSegue", sender: nil)
             } else {
-                print("Error: \(error?.localizedDescription)")
+                    print("Error: \(error?.localizedDescription)")
             }
         }
     }
