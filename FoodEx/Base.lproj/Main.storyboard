@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -330,7 +330,7 @@
         <!--Photo Map View Controller-->
         <scene sceneID="Uod-2h-IIg">
             <objects>
-                <viewController id="ltb-eA-Go1" customClass="PhotoMapViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ltb-eA-Go1" customClass="PhotoMapViewController" customModule="FoodEx" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dEf-0p-lgs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -422,6 +422,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="QGe-0f-FPn">
                             <connections>
                                 <action selector="onLogoutButton:" destination="4Bu-OA-nJJ" id="GGk-yM-hhq"/>
+                                <segue destination="BYZ-38-t0r" kind="showDetail" identifier="LoggingOut" id="b3a-JP-4cf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="03a-hl-hYd">
@@ -452,11 +453,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aph-EQ-8vf">
                                 <rect key="frame" x="139" y="400" width="137" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="05Y-B9-iJc"/>
                                 </constraints>
+
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -474,6 +477,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="KOO-P3-h2l">
                                 <rect key="frame" x="20" y="56.5" width="374" height="306"/>
                             </imageView>
+
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -492,8 +496,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="XhC-RZ-2bp"/>
                     <connections>
+
                         <outlet property="ProfilePic" destination="KOO-P3-h2l" id="gwH-8l-mGo"/>
                         <outlet property="userName" destination="Aph-EQ-8vf" id="kIn-ee-oxL"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEN-R7-Tbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -579,7 +585,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OdG-5N-8q1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TKR-rN-Zfv" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="TKR-rN-Zfv" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lrg-7b-khe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M2h-PT-ILS">
@@ -596,13 +602,19 @@
             <point key="canvasLocation" x="-3242" y="2262"/>
         </scene>
     </scenes>
+
     <inferredMetricsTieBreakers>
         <segue reference="bJV-xX-FVu"/>
         <segue reference="vTT-kg-ctQ"/>
     </inferredMetricsTieBreakers>
+
     <resources>
         <image name="foodX" width="992" height="998"/>
         <image name="foodXWhite" width="996" height="995"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bJV-xX-FVu"/>
+        <segue reference="2Et-yP-zKo"/>
+    </inferredMetricsTieBreakers>
 </document>

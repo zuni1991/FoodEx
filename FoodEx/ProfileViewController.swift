@@ -47,4 +47,9 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
 //        profilePic.image = scaledImage
 //        dismiss(animated: true, completion: nil)
 //    }
+
 }
+    
+
+
+
