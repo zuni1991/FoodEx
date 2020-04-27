@@ -13,6 +13,8 @@ import Parse
 class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +22,44 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
         profilePic.layer.masksToBounds = true
         profilePic.layer.cornerRadius = profilePic.bounds.width / 2
         
-        
-        let user = PFUser.current()
-        userName.text = user?.username
+        let query = PFQuery(className: "_User")
+        query.findObjectsInBackground { (object, error) in
+            if error == nil{
+                if let returnedObjects = object{
+                    for object in returnedObjects{
+                        let currentUser = PFUser.current()
+                        let name = currentUser!["name"] as? String
+                        let firstCapitalized = String(name!).capitalized
+                        self.userName.text  = firstCapitalized
+                        let location = currentUser!["location"] as? String
+                        let locationCapitalized = String(location!).uppercased()
+                        self.locationLabel.text = locationCapitalized
+                        let email = currentUser!["email"] as? String
+                        self.emailLabel.text = email
+                    }
+                }
+            }
+        }
+       let profileQuery = PFQuery(className: "ProfilePic")
+        let user = PFUser.current()!
+        profileQuery.whereKey("author", equalTo:user)
+        profileQuery.findObjectsInBackground { (objects, error) in
+              if error == nil{
+                if let returnedObjects = objects{
+                    for objects in returnedObjects{
+                       let user = PFUser.current()!
+                       profileQuery.whereKey("author", equalTo:user)
+                       let ImageFile = objects["image"] as! PFFileObject
+                       let urlString = ImageFile.url!
+                       let url = URL(string: urlString)!
+                      self.profilePic.af_setImage(withURL: url)
+                    }
+                    
+                }
+                
+            
+        }
+    }
     }
 
 
@@ -40,14 +77,6 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
         
     }
     
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        let image = info[.editedImage] as! UIImage
-//        let size = CGSize(width: 300, height: 300)
-//        let profilePic = image.af_imageScaled(to: size)
-//        profilePic.image = scaledImage
-//        dismiss(animated: true, completion: nil)
-//    }
-
 }
     
 

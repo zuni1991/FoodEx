@@ -51,10 +51,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let  post = posts[indexPath.row]
         let ImageFile = post["image"] as! PFFileObject
         //let user = post["user"]
-        let user = PFUser.current()?.objectId
+        let user = post["author"] as! PFUser
         let date = post["createdAt"]
-        
-        cell.postTimeLabel.text = "Posted by \(user), "
+        let newName = "Posted by "
+        cell.postTimeLabel.text = newName + user.username!
         let urlString = ImageFile.url!
         let url = URL(string: urlString)!
         cell.captionLabel.text = post["caption"] as? String
