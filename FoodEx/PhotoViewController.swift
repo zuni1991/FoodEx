@@ -16,6 +16,7 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentField: UITextField!
+    
     var lat = 0.0
     var lon = 0.0
     
@@ -23,6 +24,9 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.bounds.width / 12
         
         // Ask for Authorisation from the User.
         self.manager.requestAlwaysAuthorization()

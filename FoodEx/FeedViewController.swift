@@ -50,13 +50,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let ImageFile = post["image"] as! PFFileObject
         //let user = post["user"]
         let user = PFUser.current()?.objectId
-        let date = post["createdAt"]
+        //let date = post["createdAt"]
         
-        cell.postTimeLabel.text = "Posted by \(user), "
+        cell.postTimeLabel.text = "Posted by \(user ?? "User"), "
         let urlString = ImageFile.url!
         let url = URL(string: urlString)!
         cell.captionLabel.text = post["caption"] as? String
         cell.photoView.af_setImage(withURL: url)
+        cell.photoView.layer.masksToBounds = true
+        cell.photoView.layer.cornerRadius = 20
         return cell
 
     }

@@ -24,7 +24,7 @@ class PhotoMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidAppear(animated)
         mapView.delegate = self
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.add_Annotations()

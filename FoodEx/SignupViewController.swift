@@ -45,7 +45,7 @@ class SignupViewController: UIViewController {
             if success {
                 self.performSegue(withIdentifier: "ProfilePicSegue", sender: nil)
             } else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(error?.localizedDescription ??  "Error performing Signup Segue" ) ")
             }
         }
     }
