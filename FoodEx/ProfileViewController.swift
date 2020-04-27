@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         profilePic.layer.masksToBounds = true
         profilePic.layer.cornerRadius = profilePic.bounds.height / 2
     }

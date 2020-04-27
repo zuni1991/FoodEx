@@ -13,6 +13,7 @@ import CoreLocation
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate{
 
     @IBOutlet weak var tableView: UITableView!
+    let myRefreshControl = UIRefreshControl()
 
     var posts = [PFObject]()
     var map_object = [String:[Double]]()
@@ -26,9 +27,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(true)
         
         let query = PFQuery(className:"Posts")
+        query.order(byDescending: "createdAt")
         query.includeKey("author")
         query.limit = 10
         query.findObjectsInBackground{(posts,error) in
@@ -138,7 +140,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
          dismiss(animated: true, completion: nil)
-        //self.performSegue(withIdentifier: "LoggingOut", sender: nil)
+        self.performSegue(withIdentifier: "LoggingOut", sender: nil)
     }
 }
  
