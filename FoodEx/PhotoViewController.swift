@@ -61,8 +61,8 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         
         post.saveInBackground { (success, error) in
             if success{
-
-                //self.dismiss(animated: true, completion: nil)
+                self.commentField.text?.removeAll()
+                self.imageView.image = UIImage(named: "foodX")
                 self.tabBarController?.selectedIndex = 0
                 print("saved!")
             }else{
