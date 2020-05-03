@@ -19,6 +19,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var map_object = [String:[Double]]()
     let locationManager = CLLocationManager()
     
+    //  NEEDED TO STORE CURRENT INDEX AND PASS TO RatingViewController
+    //  **CURRENTLY BEING HARDCODED**
+    var postIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -47,6 +51,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //postIndex = indexPath.row **COMMENTED THIS OUT BECAUSE HARDCODED WORKS BETTER FOR NOW**
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let  post = posts[indexPath.row]
         let ImageFile = post["image"] as! PFFileObject
@@ -133,7 +138,29 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let vc = nav.topViewController as? PhotoMapViewController {
             vc.feed = posts
         }
+        //  THIS IS SENDS THE INFO OF THE POST'S CREATOR TO RatingViewController
+        //  **CURRENTLY BEING HARDCODED TO 0**
+        let post = posts[postIndex]
+        let user = post["author"] as! PFUser
+        if let navs = segue.destination as? UINavigationController,
+            let vcs = navs.topViewController as? RatingViewController {
+            vcs.feeds = user
+        }
+        
     }
+    
+    
+    // "RATE THIS USER" BUTTON
+    // **CURRENTLY HARDCODED TO 0
+    @IBAction func onButtonTap(_ sender: Any) {
+        let post = posts[postIndex]
+        let user = post["author"] as! PFUser
+        // PRINTS THE INFORMATION OF THE CREATED OF THE POST
+        print(user)
+    }
+
+    
+    
     
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()

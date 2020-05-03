@@ -176,13 +176,13 @@
 				B11F69BB240DDCA1006B96A9 /* LaunchScreen.storyboard */,
 				493366B824202D1C00A3FB7F /* FeedViewController.swift */,
 				49D3D2D7245BC7F70039CF6D /* RatingViewController.swift */,
+				B1AF82DB244AD58000FE0ED3 /* ProfileViewController.swift */,
 				B11F69E624414EE6006B96A9 /* PhotoViewController.swift */,
 				493366B624202CEF00A3FB7F /* LoginViewController.swift */,
 				493366BA2420316200A3FB7F /* SignupViewController.swift */,
 				49C5EA7E2443EF770005A807 /* PhotoMapViewController.swift */,
 				B11F69BE240DDCA1006B96A9 /* Info.plist */,
 				B1AF82D9244ABE9700FE0ED3 /* ProfileCameraViewController.swift */,
-				B1AF82DB244AD58000FE0ED3 /* ProfileViewController.swift */,
 				B1AF82DD244AE4D200FE0ED3 /* ProfileCell.swift */,
 			);
 			path = FoodEx;
