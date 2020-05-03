@@ -20,7 +20,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     let locationManager = CLLocationManager()
     
     //  NEEDED TO STORE CURRENT INDEX AND PASS TO RatingViewController
-    //  **CURRENTLY BEING HARDCODED**
     var postIndex = 0
     
     override func viewDidLoad() {
@@ -51,7 +50,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //postIndex = indexPath.row **COMMENTED THIS OUT BECAUSE HARDCODED WORKS BETTER FOR NOW**
+            //  postIndex IS USED TO PASS INFORMATION TO RatingViewControlloer
+        postIndex = indexPath.row //    **THIS IS SUPPOSE TO STORE THE INDEX FOR
+                                  //      THE CELL, BUT DOESN'T WORK**
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let  post = posts[indexPath.row]
         let ImageFile = post["image"] as! PFFileObject
@@ -138,9 +139,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let vc = nav.topViewController as? PhotoMapViewController {
             vc.feed = posts
         }
-        //  THIS IS SENDS THE INFO OF THE POST'S CREATOR TO RatingViewController
-        //  **CURRENTLY BEING HARDCODED TO 0**
-        let post = posts[postIndex]
+        //  THIS SENDS THE INFO OF THE POST'S CREATOR TO RatingViewController
+        let post = posts[postIndex] // **USES postIndex AS THE TABLE'S INDEX BUT DOENS'T WORK
         let user = post["author"] as! PFUser
         if let navs = segue.destination as? UINavigationController,
             let vcs = navs.topViewController as? RatingViewController {
@@ -150,12 +150,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    // "RATE THIS USER" BUTTON
-    // **CURRENTLY HARDCODED TO 0
+    // ** WILL BE DELETED ** "RATE THIS USER" BUTTON
+    // THIS FUNCTION ESSENTIALLY DOES NOTHING EXCEPT
+    // PRINTS THE INFORMATION OF THE CREATOR OF THE POST **DOESN'T WORK**
     @IBAction func onButtonTap(_ sender: Any) {
-        let post = posts[postIndex]
+        let post = posts[postIndex] // ** WRONG INFORMATION IS PRINTED BECAUSE postIndex IS WRONG
         let user = post["author"] as! PFUser
-        // PRINTS THE INFORMATION OF THE CREATED OF THE POST
         print(user)
     }
 

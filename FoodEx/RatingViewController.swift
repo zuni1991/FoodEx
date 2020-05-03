@@ -9,87 +9,75 @@
 import UIKit
 import Parse
 
-class RatingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource {
-    
+class RatingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource  {
 
-    
-
+    @IBOutlet weak var reviewTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
-    //  *THE TEXTFIELD IN STORYBOARD IS NOT CONNECTED YET*
-    
-    
+    //  ARRAY TO SAVE REVIEWS FROM PARSE
+    var reviewList:[String] = []
     //  BROUGHT THIS FROM FeedViewController
     var feeds:PFUser?
     //  LIST USED FOR PICKER VIEW
     let rateStars = ["★☆☆☆☆", "★★☆☆☆", "★★★☆☆", "★★★★☆", "★★★★★"]
-    
-    //  **NOT BEING USED ATM**
-    var selectedRating = 0
-    var numberOfRating = 0
-    var currentRating = 0
-    
-    
-    
-    //  FIVE, SO THAT ONLY FIVE REVIEWS ARE SHOWN.
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    //  HARDCODED REVIEW IS PRINTED FOR 5 CELLS
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-    
-        cell.textLabel!.text = "★★★☆☆ This is a review"
-        return cell
-    }
-    
+    //  INITIALIZED IN CASE USER DOESN'T MOVE PICKER
+    var selectedRating = "★☆☆☆☆"
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = self
+        
         tableView.delegate = self
-        
-        
-        //  OLD CODE **WE MIGHT USE**
-        //  GETS THE AVERAGE RATING OF EACH USER
-        //  COULDN'T USE BECAUSE COULDN'T FIGURE OUT HOW TO CHANGE INFO IN USER CLASS FROM HERE
-        numberOfRating = feeds!["numberOfRatings"] as? Int ?? 1
-        currentRating = feeds!["rating"] as? Int ?? 1
-        let averageRating = currentRating/numberOfRating
-        let stringNum = "\(averageRating as! Int)"
+        tableView.dataSource = self
         
         //  HARDED SO THE STRING WON'T SHOW WHEN YOU RUN THE APP
-        //  UNCOMMENT line 69 TO SHOW THE STRING WHEN YOU RUN THE APP
+        //  UNCOMMENT line 39 TO SHOW THE STRING WHEN YOU RUN THE APP
         self.ratingLabel.text = ""
         //self.ratingLabel.text = stringNum + "★ / 5★"
+        
+        let userOID = feeds?.objectId as! String
+        
+        let query = PFQuery(className: "Reviews2")
+        query.whereKey("poster", equalTo:userOID)
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                // The find succeeded.
+                print("Successfully retrieved \(objects.count) reviews.")
+                // Do something with the found objects
+                for object in objects {
+                    let starString = object["stars"] as? String
+                    let reviewString = object["comment"] as? String
+                    self.reviewList.append(starString! + " " + reviewString!)
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 
-    //  CURRENTLY SAVES A HARD CODED REVIEW TO PARSE
+    //   SAVES A REVIEW TO PARSE
     @IBAction func onSubmit(_ sender: Any) {
-        
         let poster = feeds
-        let review = PFObject(className: "Reviews")
-
-        review["poster"] = poster
-        review["author"] = PFUser.current()!
-        review["stars"] = "★★★★☆"
-        review["comment"] = "The food great!"
-        
-        poster?.add(review, forKey: "reviews")
-
-        poster?.saveInBackground { (success, error) in
+        let objId = poster!.objectId as! String
+        print(objId)
+        let review = PFObject(className: "Reviews2")
+        review["poster"] = objId
+        review["author"] = PFUser.current()
+        review["stars"] = selectedRating
+        review["comment"] = reviewTextField.text
+        review.saveInBackground { (success, error) in
         if success {
             print("Saved")
         } else {
             print("Error: \(error?.localizedDescription)")
         }
         }
-
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -108,11 +96,20 @@ class RatingViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         return rateStars[row]
     }
     
-    //  **MUST BE CHANGED** //  SAVES THE INDEX+1 OF THE STARS YOU SELECT IN THE PICKER.
-                            //  MUST BE CHANGED TO SAVE THE STRING VALUE, INSTEAD OF THE INT/INDEX
+    //  SAVES THE STRING VALUE OF THE STARS YOU SELECT IN THE PICKER.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRating = row + 1
-        print(selectedRating)
+        selectedRating = rateStars[row]
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return reviewList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let rreview = reviewList[indexPath.row]
+        cell.textLabel!.text = rreview
+        return cell
     }
     
 }
