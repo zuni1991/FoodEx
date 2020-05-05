@@ -15,6 +15,7 @@ class RatingViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet weak var reviewsLabel: UILabel!
     //  ARRAY TO SAVE REVIEWS FROM PARSE
     var reviewList:[String] = []
     //  BROUGHT THIS FROM FeedViewController
@@ -24,21 +25,20 @@ class RatingViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     //  INITIALIZED IN CASE USER DOESN'T MOVE PICKER
     var selectedRating = "★☆☆☆☆"
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         
-        //  HARDED SO THE STRING WON'T SHOW WHEN YOU RUN THE APP
-        //  UNCOMMENT line 39 TO SHOW THE STRING WHEN YOU RUN THE APP
-        self.ratingLabel.text = ""
-        //self.ratingLabel.text = stringNum + "★ / 5★"
-        
+        //  STORES THE USER'S objectId INTO userOID **NEEDED FOR QUERY**
         let userOID = feeds?.objectId as! String
+        //  STORES THE USER'S username INTO userName **NEEDED TO UPDATE LABELS**
+        let userName = feeds?.username as! String
+        //  LABELS + TEXT FOR STORYBOARD
+        self.ratingLabel.text = "Leave a review for " + userName + ":"
+        self.reviewsLabel.text = userName + "'s reviews"
         
+        //  QUERY TO GET ALL REVIEWS FOR USER WHERE objectId = userOID
         let query = PFQuery(className: "Reviews2")
         query.whereKey("poster", equalTo:userOID)
         query.order(byDescending: "createdAt")

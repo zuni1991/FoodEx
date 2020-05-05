@@ -14,7 +14,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     let myRefreshControl = UIRefreshControl()
-
     var posts = [PFObject]()
     var map_object = [String:[Double]]()
     let locationManager = CLLocationManager()
@@ -27,11 +26,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         checkLocationServices()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
         let query = PFQuery(className:"Posts")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
@@ -42,6 +41,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.tableView.reloadData()
             }
         }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,10 +49,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            //  postIndex IS USED TO PASS INFORMATION TO RatingViewControlloer
-        postIndex = indexPath.row //    **THIS IS SUPPOSE TO STORE THE INDEX FOR
-                                  //      THE CELL, BUT DOESN'T WORK**
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostCell
         let  post = posts[indexPath.row]
         let ImageFile = post["image"] as! PFFileObject
@@ -65,6 +61,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let url = URL(string: urlString)!
         cell.captionLabel.text = post["caption"] as? String
         cell.photoView.af_setImage(withURL: url)
+        
         return cell
 
     }
@@ -140,7 +137,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             vc.feed = posts
         }
         //  THIS SENDS THE INFO OF THE POST'S CREATOR TO RatingViewController
-        let post = posts[postIndex] // **USES postIndex AS THE TABLE'S INDEX BUT DOENS'T WORK
+        let post = posts[postIndex] // **USES postIndex AS THE TABLE'S INDEX
         let user = post["author"] as! PFUser
         if let navs = segue.destination as? UINavigationController,
             let vcs = navs.topViewController as? RatingViewController {
@@ -150,13 +147,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    // ** WILL BE DELETED ** "RATE THIS USER" BUTTON
-    // THIS FUNCTION ESSENTIALLY DOES NOTHING EXCEPT
-    // PRINTS THE INFORMATION OF THE CREATOR OF THE POST **DOESN'T WORK**
-    @IBAction func onButtonTap(_ sender: Any) {
-        let post = posts[postIndex] // ** WRONG INFORMATION IS PRINTED BECAUSE postIndex IS WRONG
-        let user = post["author"] as! PFUser
-        print(user)
+    // "RATE THIS USER" BUTTON
+    // ** STORES THE TABLE INDEX OF THE POST TO postIndex
+    @IBAction func onButtonTap(_ sender: AnyObject) {
+        let buttonPosition:CGPoint = sender.convert(CGPoint.zero, to:self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
+        postIndex = indexPath![1]
     }
 
     
